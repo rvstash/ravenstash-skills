@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ravenstash Packages"
+  short_description: "Manage PyPI, npm, and Maven package workflows."
+  default_prompt: "Use $ravenstash-packages to complete this Ravenstash package workflow safely."

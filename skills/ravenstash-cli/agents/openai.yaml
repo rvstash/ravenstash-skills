@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ravenstash CLI"
+  short_description: "Install, authenticate, and operate the rvs CLI."
+  default_prompt: "Use $ravenstash-cli to set up or troubleshoot the rvs CLI for this task."

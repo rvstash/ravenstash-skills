@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ravenstash OCI"
+  short_description: "Use OCI repositories for images and Helm charts safely."
+  default_prompt: "Use $ravenstash-oci to complete this Container, Helm, Docker, or ORAS workflow."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ravenstash"
+  short_description: "Use Ravenstash products safely and route to the right workflow."
+  default_prompt: "Use $ravenstash to determine the correct Ravenstash product and workflow for this request."
