@@ -16,7 +16,7 @@ Windows 11 uses PowerShell:
 irm https://ravenstash.com/install.ps1 | iex
 ```
 
-The supported release targets Linux glibc and musl, macOS, and Windows on amd64 and arm64, plus versioned Nix flakes and matching Linux paths for WSL2. The installer executes downloaded code. Show the applicable command and installer URL for review; run it only when the user has authorized the host-level installation.
+The supported release targets Linux glibc and musl, macOS, and Windows on amd64 and arm64, plus versioned Nix flakes and matching Linux paths for WSL2. The installer executes downloaded code. Show the applicable command and installer URL for review; run it only when the user has authorized the host-level installation. CI jobs install an exact version instead; see the packages skill's automation reference or the [setup-ravenstash action](https://github.com/rvstash/setup-ravenstash).
 
 Check for compatible updates without applying one:
 
@@ -74,7 +74,6 @@ Report `.python-version`, `.node-version`, or `.java-version` as a changed file 
 
 ## Shell changes
 
-- `rvs runtime setup-shell` installs runtime shims.
-- The former `rvs shell setup` context prompt is removed; do not invoke it.
+- `rvs runtime setup-shell` installs runtime shims. `rvs` has no other shell-integration command.
 
 Runtime shim setup can edit a shell startup file. Inspect or report the change and do not apply it merely because a single command needs environment variables.

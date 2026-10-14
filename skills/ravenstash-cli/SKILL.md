@@ -4,7 +4,7 @@ description: Install, update, authenticate, inspect, and troubleshoot the Ravens
 license: MIT
 metadata:
   author: Ravenstash
-  version: "0.7.1"
+  version: "0.8.0"
   ravenstash-rvs-compatibility: "0.15.x"
 ---
 
@@ -46,7 +46,7 @@ Ravenstash commands emit one JSON result. Output from native passthrough tools r
 - Keep authenticated user, local profile, acting account, target, repository format, and OCI content type separate.
 - Prefer one-shot `--profile`, `--account`, and `--target` options when the user asks for one operation in a different context. Do not persist a switch unless requested.
 - If a selector is ambiguous, stop and present the stable choices. Never choose by name similarity.
-- Runtime shell shims change a startup file and require user intent. The former context-prompt `rvs shell` commands are removed; do not reinstall them.
+- Runtime shell shims change a startup file and require user intent.
 
 ## Unsupported groups
 

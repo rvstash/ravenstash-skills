@@ -50,4 +50,4 @@ python3 scripts/validate.py
 git diff --check
 ```
 
-Also exercise changed command examples against the pinned compatible `rvs` binary. Model evals must judge behavior and side effects, not merely wording.
+CI also runs `scripts/check_rvs_commands.py` against the pinned CLI release in `.github/workflows/validate.yml`; keep that version equal to the release named in the skills. Also exercise changed command examples against that binary. Model evals must judge behavior and side effects, not merely wording.

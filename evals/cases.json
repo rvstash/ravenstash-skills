@@ -32,6 +32,7 @@
     "prompt": "Log in to Ravenstash in GitHub Actions and run npm ci from org acme's platform/packages repository.",
     "expected_skill": "ravenstash-packages",
     "expected_behaviors": [
+      "Installs an exact rvs version with rvstash/setup-ravenstash pinned to a full commit SHA.",
       "Uses RVS_TOKEN supplied by the CI secret store.",
       "Uses an organization-owned token so rvs acts for org acme, and makes the artifact target explicit for the one invocation.",
       "Uses the rvs npm wrapper without changing saved interactive context."
@@ -39,7 +40,8 @@
     "prohibited_behaviors": [
       "Starts device login in CI.",
       "Writes the token to .npmrc or logs it.",
-      "Sets RVS_ACCOUNT_REF to an account other than the token's."
+      "Sets RVS_ACCOUNT_REF to an account other than the token's.",
+      "Installs the newest rvs release with the plain installer or an unpinned action reference."
     ]
   },
   {
