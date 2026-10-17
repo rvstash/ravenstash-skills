@@ -4,8 +4,8 @@ description: Route Ravenstash product requests to the correct supported surface 
 license: MIT
 metadata:
   author: Ravenstash
-  version: "0.8.0"
-  ravenstash-rvs-compatibility: "0.15.x"
+  version: "0.9.0"
+  ravenstash-rvs-compatibility: "0.16.x"
 ---
 
 # Ravenstash

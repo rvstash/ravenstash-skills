@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 # rvs passes everything except its own --rvs-* options to these native tools.
-NATIVE_TOOLS = {"docker", "helm", "mvn", "npm", "oras", "pip", "twine", "uv"}
+NATIVE_TOOLS = {"docker", "helm", "mvn", "npm", "oras", "pip", "pnpm", "python", "twine", "uv"}
 SHELL_FENCES = {"", "bash", "console", "sh", "shell", "yaml", "yml"}
 TEXT_SUFFIXES = {".md", ".yml", ".yaml"}
 FENCE = re.compile(r"^\s*(```|~~~)\s*([\w-]*)")

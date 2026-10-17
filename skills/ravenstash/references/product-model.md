@@ -32,4 +32,4 @@ An explicit target is one-shot and must not change saved selection. A saved targ
 
 ## Availability floor for these skills
 
-These sources target the released `rvs` 0.15.x line and were verified against `v0.15.1`. `rvs art repo` manages repositories for packages, container images, and Helm charts. Top-level `rvs repo`, `rvs artifacts`, and `rvs ci` are absent. Repository rename and deletion, upstream changes, mirror age changes and deletion, and whole-package deletion are web-app-only. Check current public documentation before making broader product-availability claims.
+These sources target the released `rvs` 0.16.x line and were verified against `v0.16.0`. `rvs art repo` manages repositories for packages, container images, and Helm charts. Top-level `rvs repo`, `rvs artifacts`, and `rvs ci` are absent. Repository rename and deletion, upstream changes, mirror age changes and deletion, and whole-package deletion are web-app-only. Check current public documentation before making broader product-availability claims.

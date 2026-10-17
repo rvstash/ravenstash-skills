@@ -12,14 +12,14 @@ In GitHub Actions, use `rvstash/setup-ravenstash` pinned to a full commit SHA. I
 - name: Set up Ravenstash CLI
   uses: rvstash/setup-ravenstash@969c51bc762cc75cbe5707e99b63aedad7bd22da # v0.1.0
   with:
-    version: "0.15.1"
+    version: "0.16.0"
 ```
 
 On other CI systems, use the portable installer with an exact version:
 
 ```bash
 curl -fsSL https://ravenstash.com/install.sh \
-  | RVS_INSTALL_METHOD=portable RVS_INSTALL_VERSION=0.15.1 bash
+  | RVS_INSTALL_METHOD=portable RVS_INSTALL_VERSION=0.16.0 bash
 export PATH="$HOME/.local/bin:$PATH"
 ```
 

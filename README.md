@@ -2,7 +2,7 @@
 
 Official Agent Skills for Ravenstash products and the `rvs` developer CLI. This repository contains the portable workflows and their behavioral evals.
 
-The 0.8 skill source targets the `rvs` 0.15.x compatibility channel declared in each skill's `ravenstash-rvs-compatibility` metadata. Installed CLI help remains the execution authority.
+The 0.9 skill source targets the `rvs` 0.16.x compatibility channel declared in each skill's `ravenstash-rvs-compatibility` metadata. Installed CLI help remains the execution authority.
 
 The skills follow the [Agent Skills specification](https://agentskills.io/) and are designed for Codex, GitHub Copilot, Claude Code, Cursor, and other compatible agents. They teach product-specific decisions and safety boundaries; current facts and complete command references remain in the [Ravenstash documentation](https://docs.ravenstash.com/).
 

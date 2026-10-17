@@ -1,6 +1,6 @@
 # npm workflows
 
-Load for npm, Node.js, JavaScript, TypeScript, scoped-package, install, or publish work.
+Load for npm, pnpm, Node.js, JavaScript, TypeScript, scoped-package, install, or publish work.
 
 ## Install
 
@@ -107,6 +107,21 @@ rvs npm --rvs-target platform/releases publish --tag next
 - `dist-tag add` that points `latest` at a version and every `dist-tag rm` ask for confirmation. A run that cannot answer, such as CI, stops without the change unless `--rvs-yes` is placed before the npm arguments; add it only for an authorized change.
 - The same rules and refusals apply as for `rvs art package tag`. npm has no revision precondition, so prefer `rvs art package tag set` or `delete` with `--expect-revision` when a concurrent change would matter.
 - `publish --tag NAME` gives the published version that tag instead of moving `latest`; use it for prereleases. A package that has no `latest` yet still gets `latest` on that version. Check the result with `tag list`.
+
+## pnpm
+
+`rvs pnpm` wraps pnpm 9 to 12 the same way `rvs npm` wraps npm: the same targets, the same publish address for `publish`, `dist-tag add`/`rm`, `deprecate`, and `unpublish`, and the same confirmations.
+
+```bash
+rvs pnpm --rvs-target platform/packages install --frozen-lockfile
+rvs pnpm --rvs-target platform/releases -r publish --no-git-checks
+```
+
+- The selected target takes precedence over a project `.npmrc` or `pnpm-workspace.yaml` registry. Do not pass `--registry`.
+- Ravenstash serves npm's own tarball addresses, so `pnpm-lock.yaml` names no Ravenstash host. Do not edit lockfiles to add or remove registry URLs.
+- pnpm 11 and later skip versions published less than a day ago when they resolve a range or `latest` (`minimumReleaseAge`). After a publish, install the exact version; change `minimumReleaseAge` only when the user asks.
+- When `package.json` pins another pnpm version in `packageManager`, `rvs` warns because pnpm would download that version from the selected repository. Run the pinned pnpm version instead of removing the pin.
+- pnpm 11 and later always move `latest` with `dist-tag add PACKAGE@VERSION` unless the command names another tag; give both the version and the tag.
 
 ## Configuration
 

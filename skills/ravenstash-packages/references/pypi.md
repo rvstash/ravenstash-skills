@@ -28,6 +28,8 @@ rvs twine --rvs-target platform/releases upload dist/*
 rvs uv --rvs-target platform/releases publish
 ```
 
+To build with pypa/build, `rvs python --rvs-target platform/packages -m build` installs the build requirements from that repository with read access. `rvs python` runs only `python -m build`; it refuses any other Python invocation, so do not route scripts or `pip` through it.
+
 Inspect the distribution files and exact repository before publishing. A publish creates durable remote state and is not a preparatory step that may be invented to satisfy another request.
 
 ## Persistent configuration

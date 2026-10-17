@@ -4,8 +4,8 @@ description: Use Ravenstash private PyPI, npm, and Maven repositories and read-o
 license: MIT
 metadata:
   author: Ravenstash
-  version: "0.8.0"
-  ravenstash-rvs-compatibility: "0.15.x"
+  version: "0.9.0"
+  ravenstash-rvs-compatibility: "0.16.x"
 ---
 
 # Ravenstash Packages
@@ -26,7 +26,7 @@ Repository management lives under `rvs art repo`. The product also supports Cont
 
 - For repository, package lifecycle, upstream, or mirror work, read [references/repositories-and-caches.md](references/repositories-and-caches.md).
 - For Python installs or publishing, read [references/pypi.md](references/pypi.md).
-- For npm installs, publishing, or package tags (npm distribution tags such as `latest` or `beta`), read [references/npm.md](references/npm.md).
+- For npm or pnpm installs, publishing, or package tags (npm distribution tags such as `latest` or `beta`), read [references/npm.md](references/npm.md).
 - For Maven installs or deployments, read [references/maven.md](references/maven.md).
 - For unattended jobs, read [references/automation.md](references/automation.md) in addition to the ecosystem reference.
 
@@ -41,6 +41,7 @@ rvs pip --rvs-target platform/packages install internal-sdk
 rvs uv --rvs-target platform/packages sync
 rvs twine --rvs-target platform/releases upload dist/*
 rvs npm --rvs-target platform/packages ci
+rvs pnpm --rvs-target platform/packages install --frozen-lockfile
 rvs mvn --rvs-target platform/packages verify
 ```
 
