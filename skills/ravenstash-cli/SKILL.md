@@ -4,7 +4,7 @@ description: Install, update, authenticate, inspect, and troubleshoot the Ravens
 license: MIT
 metadata:
   author: Ravenstash
-  version: "0.10.0"
+  version: "0.10.1"
   ravenstash-rvs-compatibility: "0.17.x"
 ---
 

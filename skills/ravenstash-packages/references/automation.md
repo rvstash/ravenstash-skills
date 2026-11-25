@@ -10,7 +10,7 @@ In GitHub Actions, use `rvstash/setup-ravenstash` pinned to a full commit SHA. I
 
 ```yaml
 - name: Set up Ravenstash CLI
-  uses: rvstash/setup-ravenstash@969c51bc762cc75cbe5707e99b63aedad7bd22da # v0.1.0
+  uses: rvstash/setup-ravenstash@002b67ca6eedba2e4e2bb79993075b14e53cf7fb # v0.1.1
   with:
     version: "0.17.0"
 ```
