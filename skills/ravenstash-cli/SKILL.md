@@ -4,8 +4,8 @@ description: Install, update, authenticate, inspect, and troubleshoot the Ravens
 license: MIT
 metadata:
   author: Ravenstash
-  version: "0.9.1"
-  ravenstash-rvs-compatibility: "0.16.x"
+  version: "0.10.0"
+  ravenstash-rvs-compatibility: "0.17.x"
 ---
 
 # Ravenstash CLI
@@ -15,7 +15,7 @@ Use `rvs` for Ravenstash login, local context, repository discovery, and tempora
 ## Preflight
 
 1. Check for the CLI with `command -v rvs`.
-2. If present, run `rvs --version`. This source targets the `0.16.x` releases and was verified against `v0.16.1`; if the installed command differs, use its help and current release notes rather than forcing these examples.
+2. If present, run `rvs --version`. This source targets the `0.17.x` releases and was verified against `v0.17.0`; if the installed command differs, use its help and current release notes rather than forcing these examples.
 3. Discover exact syntax with `rvs --help` and `rvs <group> --help`. Never guess a subcommand or option.
 4. Before authenticated work, inspect `rvs auth status` and `rvs status`, which verifies the signed-in user and shows the profile, acting account, API, and one target line per format: the selected repository or mirror, the default mirror used automatically, or `not selected`. For package work, use `rvs art status` as needed. Both status commands only read.
 

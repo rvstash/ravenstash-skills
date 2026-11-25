@@ -35,4 +35,4 @@ When nothing is selected for pypi, npm, or maven, reads by a personal account si
 
 ## Availability floor for these skills
 
-These sources target the released `rvs` 0.16.x line and were verified against `v0.16.1`. `rvs art repo` manages repositories for packages, container images, and Helm charts. Top-level `rvs repo`, `rvs artifacts`, and `rvs ci` are absent. Repository rename and deletion, upstream changes, mirror age changes and deletion, and whole-package deletion are web-app-only. Check current public documentation before making broader product-availability claims.
+These sources target the `rvs` 0.17.x line and were verified against `v0.17.0`. `rvs art repo` manages repositories for packages, container images, and Helm charts. Top-level `rvs repo`, `rvs artifacts`, and `rvs ci` are absent. Repository rename and deletion, upstream changes, mirror age changes and deletion, and whole-package deletion are web-app-only. Check current public documentation before making broader product-availability claims.
