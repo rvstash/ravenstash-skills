@@ -18,8 +18,8 @@ Repository management lives under `rvs art repo`. The product also supports Cont
 
 1. Run `rvs --version` and use `rvs <group> --help` for exact syntax.
 2. Inspect authentication with `rvs auth status` and, when identity matters, `rvs auth whoami`.
-3. Resolve the acting account and target with `rvs art status`, an explicit `--account`, a one-shot `--target`, or wrapper `--rvs-account` and `--rvs-target`.
-4. Prefer the one-shot forms when the user did not request a saved selection change. `rvs art status` only reads.
+3. Resolve the acting account and target with `rvs art status`, an explicit `--account`, a one-shot `--target`, or wrapper `--rvs-account` and `--rvs-target`. `rvs art status` only reads and shows one line per format: the selected repository or mirror, the default mirror used automatically, or `not selected`.
+4. Prefer the one-shot forms when the user did not request a saved selection change, and always when the user named a repository or mirror.
 5. Resolve the format. Never publish to a mirror or use a package-release workflow against OCI content.
 
 ## Route the workflow
@@ -47,12 +47,14 @@ rvs mvn --rvs-target platform/packages verify
 
 Arguments after the Ravenstash wrapper options belong to the native tool. Do not assume their output follows `rvs --json`.
 
+Without `--rvs-target`, each wrapper uses the target selected for its format: pypi for `pip`, `uv`, `twine`, and `python`; npm for `npm` and `pnpm`; maven for `mvn`. When nothing is selected for that format, an install or other read by a personal account signed in with `rvs auth login` uses the account's default mirror of the format and names it in a note on standard error. Publishing, deletion, organization accounts, and `RVS_TOKEN` automation never use it. Do not rely on that fallback when the user named a target; report the mirror named in the note when a read used it, and do not treat such a read as evidence about private packages.
+
 The wrappers must not cause a skill or agent to copy tokens into `.npmrc`, `pip.conf`, `.pypirc`, `settings.xml`, `pyproject.toml`, or `uv.toml`.
 
 ## Mutation boundary
 
 - Listing, showing, resolving URLs, and checking current context are read-only.
-- Creating repositories or mirrors, selecting saved context, configuring persistent native clients, publishing, yanking, deprecating, and deleting versions or OCI content mutate local or remote state. Deleted versions go to the repository trash and are restored only in the web app.
+- Creating repositories or mirrors, selecting or clearing saved context (per format), configuring persistent native clients, publishing, yanking, deprecating, and deleting versions or OCI content mutate local or remote state. Deleted versions go to the repository trash and are restored only in the web app.
 - Renaming or deleting a repository, changing its upstreams, changing a private mirror's age policy, deleting a mirror, and deleting a whole package are web-app-only. Route them to the Ravenstash web app; do not invent an `rvs` command or call the API directly.
 - Before a mutation, report the exact acting account, namespace/repository or mirror, format, package/version when applicable, and intended change.
 - Package tags exist only for npm and, unlike OCI tags, move. Setting, moving, or deleting one changes what installs resolve: listing tags never authorizes it, and it needs the exact package, tag, and version as well. A repository changes only its own tags; a tag that comes from an upstream is changed in its source. Report such a refusal instead of retrying or trying another route.

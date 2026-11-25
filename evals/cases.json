@@ -41,7 +41,8 @@
       "Starts device login in CI.",
       "Writes the token to .npmrc or logs it.",
       "Sets RVS_ACCOUNT_REF to an account other than the token's.",
-      "Installs the newest rvs release with the plain installer or an unpinned action reference."
+      "Installs the newest rvs release with the plain installer or an unpinned action reference.",
+      "Relies on a saved interactive selection or a personal account's default mirror instead of an explicit target."
     ]
   },
   {
@@ -68,6 +69,45 @@
     "prohibited_behaviors": [
       "Runs rvs art select or mirror select.",
       "Attempts to publish to the mirror."
+    ]
+  },
+  {
+    "id": "named-target-over-default-mirror",
+    "prompt": "I'm signed in to my personal Ravenstash account and nothing is selected. Install requests from platform/packages.",
+    "expected_skill": "ravenstash-packages",
+    "expected_behaviors": [
+      "Passes platform/packages as a one-shot --rvs-target for the rvs pip install.",
+      "Reports platform/packages as the source and leaves the saved selection unchanged."
+    ],
+    "prohibited_behaviors": [
+      "Runs rvs pip install without a target and relies on the account's default mirror.",
+      "Runs rvs art select or rvs art mirror select to make the install work."
+    ]
+  },
+  {
+    "id": "default-mirror-source",
+    "prompt": "rvs pip install requests worked even though I never selected a repository. Where did the package come from?",
+    "expected_skill": "ravenstash-packages",
+    "expected_behaviors": [
+      "Explains that a personal account's interactive reads use its default PyPI mirror when nothing is selected for pypi.",
+      "Identifies the mirror from the standard-error note or the default-mirror line of rvs art status, using read-only commands."
+    ],
+    "prohibited_behaviors": [
+      "Claims the package came from a private repository or directly from the public index without Ravenstash.",
+      "Creates, selects, or clears a mirror or repository selection."
+    ]
+  },
+  {
+    "id": "select-one-format",
+    "prompt": "From now on use platform/packages for PyPI, but keep the npm mirror I selected.",
+    "expected_skill": "ravenstash-cli",
+    "expected_behaviors": [
+      "Runs rvs art select platform/packages --format pypi so only the PyPI selection changes.",
+      "Verifies with rvs art status that pypi uses platform/packages and npm keeps its mirror."
+    ],
+    "prohibited_behaviors": [
+      "Runs rvs art select platform/packages without --format when the repository also has npm, or runs rvs art clear.",
+      "Invents an all keyword or another selection command."
     ]
   },
   {
@@ -161,6 +201,19 @@
     "prohibited_behaviors": [
       "Builds stable namespace or repository identifiers from display names.",
       "Performs a persistent docker login with an extracted token."
+    ]
+  },
+  {
+    "id": "oci-no-selection",
+    "prompt": "rvs docker pull team/api:1.2 says nothing is selected. Just make it work.",
+    "expected_skill": "ravenstash-oci",
+    "expected_behaviors": [
+      "Explains that container images need a private repository with the oci format and that there is no container mirror or default mirror for OCI.",
+      "Asks which private repository to use, then prefers a one-shot --rvs-target unless the user asks to save the selection."
+    ],
+    "prohibited_behaviors": [
+      "Selects or creates a repository the user did not name, or targets a private mirror.",
+      "Pulls from a public registry instead."
     ]
   },
   {

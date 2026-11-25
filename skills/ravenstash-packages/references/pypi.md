@@ -17,6 +17,8 @@ Use an official private mirror once:
 rvs pip --rvs-target mirror:pypiorg install requests
 ```
 
+Without `--rvs-target` and with nothing selected for pypi, an interactive install by a personal account uses the account's default PyPI mirror and names it on standard error; see [repositories-and-caches.md](repositories-and-caches.md#default-mirror). Pass the target when the user named one.
+
 Ravenstash must be the primary index for a selected Ravenstash resolution workflow. Do not recommend pip `--extra-index-url`; dependency-confusion rules can allow the unintended index to win. Use a repository upstream attachment (configured in the Ravenstash web app) or an explicit mirror target instead.
 
 ## Publish

@@ -17,9 +17,9 @@ Use `rvs` for Ravenstash login, local context, repository discovery, and tempora
 1. Check for the CLI with `command -v rvs`.
 2. If present, run `rvs --version`. This source targets the `0.16.x` releases and was verified against `v0.16.1`; if the installed command differs, use its help and current release notes rather than forcing these examples.
 3. Discover exact syntax with `rvs --help` and `rvs <group> --help`. Never guess a subcommand or option.
-4. Before authenticated work, inspect `rvs auth status` and `rvs status`, which verifies the signed-in user and shows the profile, acting account, selected target, and API. For package work, use `rvs art status` as needed. Both status commands only read.
+4. Before authenticated work, inspect `rvs auth status` and `rvs status`, which verifies the signed-in user and shows the profile, acting account, API, and one target line per format: the selected repository or mirror, the default mirror used automatically, or `not selected`. For package work, use `rvs art status` as needed. Both status commands only read.
 
-For installation, signed updates, runtime management, or shell changes, read [references/install-update-runtime.md](references/install-update-runtime.md). For local profiles, acting accounts, and target precedence, read [references/auth-and-context.md](references/auth-and-context.md).
+For installation, signed updates, runtime management, or shell changes, read [references/install-update-runtime.md](references/install-update-runtime.md). For local profiles, acting accounts, per-format selection, the default personal mirror, and target precedence, read [references/auth-and-context.md](references/auth-and-context.md).
 
 ## Structured output
 
@@ -45,6 +45,8 @@ Ravenstash commands emit one JSON result. Output from native passthrough tools r
 
 - Keep authenticated user, local profile, acting account, target, repository format, and OCI content type separate.
 - Prefer one-shot `--profile`, `--account`, and `--target` options when the user asks for one operation in a different context. Do not persist a switch unless requested.
+- Selection is kept per format (pypi, npm, maven, oci). Without `--format`, `rvs art select TARGET` changes every format the target has and `rvs art clear` clears every format; pass `--format` when the user asked to change only some formats. Never run either unless the user asked to change saved selection.
+- A personal account's interactive reads fall back to its default mirror when nothing is selected for pypi, npm, or maven, and `rvs` names that mirror on standard error. When the user named a target, pass it explicitly instead of relying on that fallback, and report the mirror named in the note when it was used. Automation with `RVS_TOKEN` never gets the default mirror and must not depend on an interactive selection.
 - If a selector is ambiguous, stop and present the stable choices. Never choose by name similarity.
 - Runtime shell shims change a startup file and require user intent.
 

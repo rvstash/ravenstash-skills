@@ -11,7 +11,7 @@ rvs mvn --rvs-target platform/packages dependency:get \
   -Dartifact=com.example:lib:1.0.0
 ```
 
-Private mirrors support reads only. Maven remains responsible for the project model, dependency graph, lifecycle, and build output.
+Private mirrors support reads only. Without `--rvs-target` and with nothing selected for maven, an interactive build by a personal account reads from the account's default Maven mirror and names it on standard error; see [repositories-and-caches.md](repositories-and-caches.md#default-mirror). Maven remains responsible for the project model, dependency graph, lifecycle, and build output.
 
 ## Deploy
 

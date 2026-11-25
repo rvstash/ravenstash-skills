@@ -46,8 +46,9 @@ Use the returned reference unchanged. Never reconstruct stable identifiers from 
 
 ## Target boundary
 
-- OCI targets are exact private repositories. `mirror:` and `custom-mirror:` targets are invalid.
-- A one-shot `--rvs-target` must not change saved selection.
+- OCI targets are exact private repositories. `mirror:` and `custom-mirror:` targets are invalid, and there is no container mirror.
+- The saved selection is kept per format. With no `--rvs-target` and nothing selected for oci, `rvs docker`, `rvs helm`, and `rvs oras` stop and ask for a private repository with the oci format; the default mirror that personal accounts use for package reads never applies to OCI. Report the missing selection; do not select or create a repository unless the user asks.
+- A one-shot `--rvs-target` must not change saved selection. When the user asks to change it, `rvs art select NAMESPACE/REPOSITORY --format oci` changes only the OCI selection.
 - Pull, inspect, show, and discover operations are normally reads. Push and publish operations create remote state and require the exact destination to be confirmed.
 - Deleting a manifest moves it to the repository trash, where only the web app restores it; deleting a tag is immediate. See the ORAS reference.
 - An OCI tag names one manifest and is never moved to another. npm distribution tags are movable package tags and belong to the package workflow, not here.

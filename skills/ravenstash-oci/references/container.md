@@ -7,11 +7,11 @@ Load for Docker image operations against a private Ravenstash repository with OC
 Select the exact repository and use the image path supplied by the user:
 
 ```bash
-rvs art select platform/runtime-images
+rvs art select platform/runtime-images --format oci
 rvs docker pull team/api:1.2
 ```
 
-Use `--rvs-target platform/runtime-images` instead when the task should not change saved selection. Pull retains the full reference printed by the CLI; it does not create a local `team/api:1.2` alias. Never assume a later local run uses that image unless it names the full reference. An internal miss never falls back publicly.
+`--format oci` changes only the OCI selection; without it, the repository is selected for every format it has. Use `--rvs-target platform/runtime-images` instead when the task should not change saved selection. Pull retains the full reference printed by the CLI; it does not create a local `team/api:1.2` alias. Never assume a later local run uses that image unless it names the full reference. An internal miss never falls back publicly.
 
 A push creates remote state. Verify the local source, destination path/tag, acting account, and OCI target before publishing. Shorthand push creates its qualified local tag automatically. A conflicting destination tag is rejected; do not replace it merely to make a retry succeed without authorization for that replacement. Tag shorthand expands only the destination and keeps its source local. `push --all-tags` requires a full reference.
 

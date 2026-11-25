@@ -5,13 +5,13 @@ Use the selected repository for Helm chart work with short chart paths. The repo
 ## Read and render
 
 ```bash
-rvs art select platform/deployment-charts
+rvs art select platform/deployment-charts --format oci
 rvs helm show chart charts/api --version 1.2.3
 rvs helm pull charts/api --version 1.2.3
 rvs helm template preview charts/api --version 1.2.3
 ```
 
-Selection changes saved metadata; use `--rvs-target` for an authorized one-shot target without changing selection. Short paths are private, including names matching local directories or public aliases such as `bitnami/nginx`. Use explicit local paths (`./api`) for local charts and plain Helm for configured public aliases. Full OCI/HTTP URLs and explicit `--repo` keep their native meaning. No private miss falls back publicly.
+Selection changes saved metadata; `--format oci` limits the change to the OCI selection, while a plain `rvs art select` selects the repository for every format it has. Use `--rvs-target` for an authorized one-shot target without changing selection. Short paths are private, including names matching local directories or public aliases such as `bitnami/nginx`. Use explicit local paths (`./api`) for local charts and plain Helm for configured public aliases. Full OCI/HTTP URLs and explicit `--repo` keep their native meaning. No private miss falls back publicly.
 
 ## Publish or deploy
 

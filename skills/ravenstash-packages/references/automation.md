@@ -44,7 +44,7 @@ The token acts for exactly one account, which `rvs` uses automatically. Make the
 rvs npm --rvs-target platform/packages ci
 ```
 
-Use equivalent wrappers for pip, uv, Twine, or Maven. A job should not depend on an interactive user's selected target. `RVS_ACCOUNT_REF`, if set, must name the token's account.
+Use equivalent wrappers for pip, uv, Twine, or Maven. A job should not depend on an interactive user's selected target. A command authenticated with `RVS_TOKEN` never uses a personal account's default mirror, even with a personal access token, so a read with no target for its format stops instead of falling back. `RVS_ACCOUNT_REF`, if set, must name the token's account.
 
 ## Logging and cleanup
 

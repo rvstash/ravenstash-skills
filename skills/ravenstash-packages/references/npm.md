@@ -10,7 +10,7 @@ rvs npm --rvs-target platform/packages ci
 rvs npm --rvs-target mirror:npmjs install lodash
 ```
 
-Private mirrors support reads only. Keep Ravenstash wrapper options before the native npm arguments. A one-shot target must not change saved selection.
+Private mirrors support reads only. Keep Ravenstash wrapper options before the native npm arguments. A one-shot target must not change saved selection. Without `--rvs-target` and with nothing selected for npm, an interactive install by a personal account uses the account's default npm mirror and names it on standard error; see [repositories-and-caches.md](repositories-and-caches.md#default-mirror).
 
 ## Publish
 
